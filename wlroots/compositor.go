@@ -210,7 +210,7 @@ type SurfaceState struct {
 	p C.struct_wlr_surface_state
 }
 
-func (s SurfaceState) Commited() SurfaceStateField {
+func (s SurfaceState) Committed() SurfaceStateField {
 	return SurfaceStateField(s.p.committed)
 }
 

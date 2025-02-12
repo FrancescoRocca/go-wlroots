@@ -263,7 +263,7 @@ func (s *Server) handleNewOutput(output wlroots.Output) {
 	 * monitor) becomes available. */
 
 	/* Configures the output created by the backend to use our allocator
-	 * and our renderer. Must be done once, before commiting the output */
+	 * and our renderer. Must be done once, before committing the output */
 	output.InitRender(s.allocator, s.renderer)
 
 	/* The output may be disabled, switch it on. */

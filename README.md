@@ -1,30 +1,25 @@
-# go-wlroots [![build](https://github.com/swaywm/go-wlroots/workflows/build/badge.svg)](https://github.com/swaywm/go-wlroots/actions/workflows/build.yml) [![Documentation](https://godoc.org/github.com/swaywm/go-wlroots/wlroots?status.svg)](https://godoc.org/github.com/swaywm/go-wlroots/wlroots)
+# go-wlroots
 
-__go-wlroots__ is a Go binding for [wlroots](https://github.com/swaywm/wlroots).
+[![Documentation](https://godoc.org/github.com/swaywm/go-wlroots/wlroots?status.svg)](https://godoc.org/github.com/swaywm/go-wlroots/wlroots)
+[![Badge](https://goreportcard.com/badge/github.com/FrancescoRocca/go-wlroots)]()
 
-It is incomplete and supports just enough to run
-[tinywl](https://gitlab.freedesktop.org/wlroots/wlroots/-/tree/master/tinywl):
+## Overview
 
-![](https://alexbakker.me/u/ys7ucs0dcw.png)
+__go-wlroots__ is a Go binding for [wlroots](https://gitlab.freedesktop.org/wlroots/wlroots), offering an interface to develop Wayland compositors with the power of Go. The Go version of [tinywl](cmd/tinywl) serves as an example application.
 
-The source of the Go version of tinywl can be found in [cmd/tinywl](cmd/tinywl).
+## Installation
 
-> [!NOTE]
-> There are currently no plans to continue development of go-wlroots, other than
-merging the occasional pull request with changes required for compatibility with
-new wlroots versions.
+- Go 1.23 or newer is required.
+- Make sure [wlroots](https://gitlab.freedesktop.org/wlroots/wlroots) 0.17 and its dependencies are installed.
 
 ## Compiling
 
-Go 1.21 or newer is required.
+Run `make all` to build everything. Binaries will be located in the `build` folder.
 
-Make sure [wlroots](https://gitlab.freedesktop.org/wlroots/wlroots) 0.17 and its dependencies are
-installed.
+## Contributing
 
-Run ``make all`` to build everything. Binaries can be found in the 'build'
-folder.
+The project is a work in progress. Contributions and PRs are welcome.
 
 ## License
 
-The source code of this project is licensed under the [MIT license](LICENSE).
->
+This project is licensed under the [MIT license](LICENSE).

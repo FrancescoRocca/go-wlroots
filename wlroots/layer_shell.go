@@ -63,11 +63,10 @@ func (s *LayerSurfaceV1) Configure(width, height uint32) uint32 {
 }
 
 func (s *LayerSurfaceV1) Destroy() {
-	if s.z != nil {
-		C.zwlr_layer_surface_v1_destroy(s.z)
-	}
 	if s.p != nil {
 		C.wlr_layer_surface_v1_destroy(s.p)
+		s.p = nil
+		s.z = nil
 	}
 }
 
@@ -91,23 +90,38 @@ func FromResource(resource *Resource) *LayerSurfaceV1 {
 }
 
 func (s *LayerSurfaceV1) SetSize(width, height uint32) {
+	if s.z == nil {
+		return
+	}
 	C.zwlr_layer_surface_v1_set_size(s.z, C.uint32_t(width), C.uint32_t(height))
 }
 
 func (s *LayerSurfaceV1) SetAnchor(anchor Anchor) {
+	if s.z == nil {
+		return
+	}
 	C.zwlr_layer_surface_v1_set_anchor(s.z, C.uint32_t(anchor))
 }
 
 func (s *LayerSurfaceV1) SetExclusiveZone(zone int32) {
+	if s.z == nil {
+		return
+	}
 	C.zwlr_layer_surface_v1_set_exclusive_zone(s.z, C.int32_t(zone))
 }
 
 func (s *LayerSurfaceV1) SetMargin(top, right, bottom, left int32) {
+	if s.z == nil {
+		return
+	}
 	C.zwlr_layer_surface_v1_set_margin(s.z, C.int32_t(top), C.int32_t(right),
 		C.int32_t(bottom), C.int32_t(left))
 }
 
 func (s *LayerSurfaceV1) SetKeyboardInteractivity(interactive bool) {
+	if s.z == nil {
+		return
+	}
 	var val C.uint32_t
 	if interactive {
 		val = 1
@@ -116,10 +130,16 @@ func (s *LayerSurfaceV1) SetKeyboardInteractivity(interactive bool) {
 }
 
 func (s *LayerSurfaceV1) AckConfigure(serial uint32) {
+	if s.z == nil {
+		return
+	}
 	C.zwlr_layer_surface_v1_ack_configure(s.z, C.uint32_t(serial))
 }
 
 func (s *LayerSurfaceV1) SetLayer(layer Layer) {
+	if s.z == nil {
+		return
+	}
 	C.zwlr_layer_surface_v1_set_layer(s.z, C.uint32_t(layer))
 }
 
