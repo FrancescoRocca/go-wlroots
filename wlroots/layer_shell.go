@@ -46,6 +46,18 @@ func NewLayerShellV1(display Display, version uint32) *LayerShellV1 {
 	}
 }
 
+func (ls *LayerShellV1) OnDestroy(cb func(*LayerShellV1)) {
+	man.add(unsafe.Pointer(ls.p), &ls.p.events.destroy, func(_ unsafe.Pointer) {
+		cb(ls)
+	})
+}
+
+func (ls *LayerShellV1) OnNewSurface(cb func(*LayerSurfaceV1)) Listener {
+	return newListener(&ls.p.events.new_surface, func(lis Listener, data unsafe.Pointer) {
+		cb(&LayerSurfaceV1{p: (*C.struct_wlr_layer_surface_v1)(data)})
+	})
+}
+
 func (s *LayerSurfaceV1) Configure(width, height uint32) uint32 {
 	return uint32(C.wlr_layer_surface_v1_configure(s.p, C.uint32_t(width), C.uint32_t(height)))
 }
@@ -113,4 +125,15 @@ func (s *LayerSurfaceV1) SetLayer(layer Layer) {
 
 func (s *LayerSurfaceV1) GetSurface() *Surface {
 	return &Surface{p: s.p.surface}
+}
+
+type Listener struct {
+	p *C.struct_wl_listener
+}
+
+func newListener(signal *C.struct_wl_signal, callback func(Listener, unsafe.Pointer)) Listener {
+	listener := Listener{p: (*C.struct_wl_listener)(C.malloc(C.sizeof_struct_wl_listener))}
+	C.wl_signal_add(signal, listener.p)
+
+	return listener
 }
