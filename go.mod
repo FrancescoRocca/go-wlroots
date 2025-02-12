@@ -1,4 +1,4 @@
-module github.com/swaywm/go-wlroots
+module github.com/FrancescoRocca/go-wlroots
 
 go 1.21
 

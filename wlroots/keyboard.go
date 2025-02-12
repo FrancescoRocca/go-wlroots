@@ -8,7 +8,7 @@ package wlroots
 import (
 	"unsafe"
 
-	"github.com/swaywm/go-wlroots/xkb"
+	"github.com/FrancescoRocca/go-wlroots/xkb"
 )
 
 // #cgo pkg-config: wlroots wayland-server
