@@ -17,7 +17,6 @@ import (
 // #include <wlr/types/wlr_output_layout.h>
 // #include <wlr/types/wlr_xcursor_manager.h>
 // #include <wlr/types/wlr_xdg_shell.h>
-// #include <wlr/render/wlr_texture.h>
 // #include <wlr/types/wlr_linux_dmabuf_v1.h>
 // #include <wlr/types/wlr_matrix.h>
 // #include <wlr/util/box.h>
@@ -50,18 +49,6 @@ const (
 	EdgeLeft   Edges = C.WLR_EDGE_LEFT
 	EdgeRight  Edges = C.WLR_EDGE_RIGHT
 )
-
-type Texture struct {
-	p *C.struct_wlr_texture
-}
-
-func (t Texture) Destroy() {
-	C.wlr_texture_destroy(t.p)
-}
-
-func (t Texture) Nil() bool {
-	return t.p == nil
-}
 
 type OutputLayout struct {
 	p *C.struct_wlr_output_layout
