@@ -145,6 +145,23 @@ type SceneRect struct {
 	p *C.struct_wlr_scene_rect
 }
 
+func NewSceneRect(parent *SceneTree, width, height int, color []float32) SceneRect {
+	p := C.wlr_scene_rect_create(parent.p, C.int(width), C.int(height), (*C.float)(&color[0]))
+	return SceneRect{p: p}
+}
+
+func (r SceneRect) SetSize(width, height int) {
+	C.wlr_scene_rect_set_size(r.p, C.int(width), C.int(height))
+}
+
+func (r SceneRect) SetColor(color []float32) {
+	C.wlr_scene_rect_set_color(r.p, (*C.float)(&color[0]))
+}
+
+func (r SceneRect) Node() SceneNode {
+	return SceneNode{p: (*C.struct_wlr_scene_node)(&r.p.node)}
+}
+
 /** A scene-graph node displaying a buffer */
 type SceneBuffer struct {
 	p *C.struct_wlr_scene_buffer
