@@ -54,3 +54,20 @@ func (r Renderer) RenderRect(box *GeoBox, color *Color, projection *Matrix) {
 	pm := projection.toC()
 	C.wlr_render_rect(r.p, &b, &c[0], &pm[0])
 }
+
+func (r Renderer) RenderTexture(texture *Texture, projection []float32, x int, y int, alpha float32) {
+	cTexture := texture.p
+	cProjection := (*C.float)(unsafe.Pointer(&projection[0])) // Convert []float32 to *C.float
+	cX := C.int(x)
+	cY := C.int(y)
+	cAlpha := C.float(alpha)
+
+	C.wlr_render_texture(
+		r.p,
+		cTexture,
+		cProjection,
+		cX,
+		cY,
+		cAlpha,
+	)
+}
