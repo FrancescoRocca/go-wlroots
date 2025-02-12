@@ -1,4 +1,6 @@
+github.com/swaywm/go-wlroots v0.0.0-20240326215517-7241d52d17bd h1:kNEyihYO7XsPYd87eG9tiynJM+7HqBi1AKTSm5D3CBs=
+github.com/swaywm/go-wlroots v0.0.0-20240326215517-7241d52d17bd/go.mod h1:/IIoMSz2jpiER35QG5uma2Jz3Mg4n2v8klw6JgpO7ms=
 golang.org/x/image v0.24.0 h1:AN7zRgVsbvmTfNyqIbbOraYL8mSwcKncEj8ofjgzcMQ=
 golang.org/x/image v0.24.0/go.mod h1:4b/ITuLfqYq1hqZcjofwctIhi7sZh2WaCjvsBNjjya8=
-golang.org/x/sys v0.15.0 h1:h48lPFYpsTvQJZF4EKyI4aLHaev3CxivZmv7yZig9pc=
-golang.org/x/sys v0.15.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
+golang.org/x/sys v0.30.0 h1:QjkSwP/36a20jFYWkSue1YwXzLmsV5Gfq7Eiy72C1uc=
+golang.org/x/sys v0.30.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
